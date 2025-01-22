@@ -115,53 +115,25 @@ MELCOW_NEW_USERS = is_enabled((environ.get('MELCOW_NEW_USERS', "True")), True)
 
 REACTION = ["🔥", "❤️", "😍", "⚡", "👍", "❤", "🔥", "🥰", "👏", "😁", "🎉", "🤩", "🙏", "👌", "🕊", "❤‍🔥", "⚡", "😇", "🤗", "😘", "🙊", "😎"]
 
-
+from os import environ, getenv
 
 # Streaming
-BIN_CHANNEL = int(environ.get("BIN_CHANNEL", "-1002410949273")) 
+BIN_CHANNEL = int(environ.get("BIN_CHANNEL", "-1001637710147")) 
 PORT = int(environ.get('PORT', 8080))
 NO_PORT = bool(environ.get('NO_PORT', False))
-#####
-# Online Stream and Download
-STREAM_MODE = bool(environ.get('STREAM_MODE', True)) # Set True or False
+BIND_ADDRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
+FQDN = str(getenv('FQDN', BIND_ADDRESS))
+HAS_SSL = bool(getenv('HAS_SSL', False))
+URL = "https://{}/".format(FQDN) if HAS_SSL or NO_PORT else \
+    "http://{}:{}/".format(FQDN, PORT)
 
-# If Stream Mode Is True Then Fill All Required Variable, If False Then Don't Fill.
-MULTI_CLIENT = False
 SLEEP_THRESHOLD = int(environ.get('SLEEP_THRESHOLD', '60'))
+WORKERS = int(environ.get('WORKERS', '4'))
+SESSION_NAME = str(environ.get('SESSION_NAME', 'safaribotts'))
+MULTI_CLIENT = False
+name = str(environ.get('name', 'safaribotts'))
 PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
-if 'DYNO' in environ:
-    ON_HEROKU = True
-else:
-    ON_HEROKU = False
-URL = environ.get("URL", "")
-#####
-#APP_NAME = None
-#if 'DYNO' in environ:
- #   ON_HEROKU = True
-  #  APP_NAME = environ.get('APP_NAME')
-#else:
- #   ON_HEROKU = False
-#BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
-#FQDN = str(getenv('FQDN', BIND_ADRESS)) if not ON_HEROKU or getenv('FQDN') else APP_NAME+'.herokuapp.com'
-#URL = "https://{}/".format(FQDN) if ON_HEROKU or NO_PORT else \
- #   "https://{}:{}/".format(FQDN, PORT)
-#SLEEP_THRESHOLD = int(environ.get('SLEEP_THRESHOLD', '60'))
-#WORKERS = int(environ.get('WORKERS', '4'))
-#SESSION_NAME = str(environ.get('SESSION_NAME', 'safaribotts'))
-#MULTI_CLIENT = False
-#name = str(environ.get('name', 'safaribotts'))
-#PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
-#if 'DYNO' in environ:
-#    ON_HEROKU = True
-#    APP_NAME = str(getenv('APP_NAME'))
 
-#else:
- #   ON_HEROKU = False
-#HAS_SSL=bool(getenv('HAS_SSL',False))
-#if HAS_SSL:
-#    URL = "https://{}/".format(FQDN)
-#else:
-#    URL = "https://{}/".format(FQDN)
 
 LOG_STR = "Current Cusomized Configurations are:-\n"
 LOG_STR += ("IMDB Results are enabled, Bot will be showing imdb details for you queries.\n" if IMDB else "IMBD Results are disabled.\n")
