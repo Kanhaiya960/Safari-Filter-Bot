@@ -102,10 +102,10 @@ LOG_CHANNEL = int(environ.get('LOG_CHANNEL', -1002237007652))
 GROUP_VERIFY_LOGS = int(environ.get('GROUP_VERIFY_LOGS', -1002237007652)) # Group verify stats 
 REQ_CHANNEL = int(environ.get('REQ_CHANNEL', -1002412021360) # movies request channel, else log channel
 SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'Blockbuster_Movies_Club')
-IMDB = is_enabled((environ.get('IMDB', "True")), True)
+IMDB = is_enabled((environ.get('IMDB', "False")), True)
 AUTO_FFILTER = is_enabled((environ.get('AUTO_FFILTER', "True")), True)
 AUTO_DELETE = is_enabled((environ.get('AUTO_DELETE', "True")), True)
-PM_FILTER = is_enabled((environ.get('PM_FILTER', "True")), False)
+PM_FILTER = is_enabled((environ.get('PM_FILTER', "False")), False)
 
 SINGLE_BUTTON = is_enabled((environ.get('SINGLE_BUTTON', "True")), True)
 CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", f"{script.CAPTION}")
