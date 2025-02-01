@@ -50,21 +50,23 @@ OWNER_USER_NAME = environ.get("OWNER_USER_NAME", "rj_09_kanhaiya") # widout 👉
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002462264302').split()]
 
 # post channel auto post new movie
-POST_CHANNELS = list(map(int, (channel.strip() for channel in environ.get('POST_CHANNELS', '-1002090374492').split(','))))
-AUTH_CHANNEL = int(environ.get('AUTH_CHANNEL', '0'))
+POST_CHANNELS = list(map(int, (channel.strip() for channel in environ.get('POST_CHANNELS', '-1002090374492 -1002393733817 -1002341735077 -1002146486688 -1002481856986').split(','))))
+AUTH_CHANNEL = int(environ.get('AUTH_CHANNEL', '-1002090374492'))
 AUTH_REQ_CHANNEL = int(environ.get('AUTH_REQ_CHANNEL', '-1002341735077'))
 NO_RESULTS_MSG = is_enabled((environ.get("NO_RESULTS_MSG", 'True')), False)
 
 # MongoDB information
-DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://teamzed:zedteamm@cluster0.tjohb2b.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-#DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://Kanhaiya:kanhaiya960@cluster0.ljdbg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
-COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
+#DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://teamzed:zedteamm@cluster0.tjohb2b.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+#DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
+#COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://PikaFiles:Kanhaiya@cluster0.olrtq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+DATABASE_NAME = environ.get('DATABASE_NAME', "PikaBot")
+COLLECTION_NAME = environ.get('COLLECTION_NAME', 'PikaBot')
 
 #stream link shortner
 STREAM_SITE = (environ.get('STREAM_SITE', 'modijiurl.com'))
 STREAM_API = (environ.get('STREAM_API', '3eca63413e5163d3467378b3f189a3dddad33307'))
-STREAM_HTO = (environ.get('STREAMHTO', 'https://t.me/Hoe/69'))
+STREAM_HTO = (environ.get('STREAMHTO', 'https://t.me/Movies_4_Download'))
 STREAM_MODE = is_enabled((environ.get('STREAM_MODE', "False")), False)
 
 
@@ -89,16 +91,16 @@ TUTORIAL3 = environ.get('TUTORIAL3', 'https://t.me/Movies_4_Download')
 # auto files delete
 AUTO_FILE_DELETE = is_enabled((environ.get('AUTO_FILE_DELETE', "True")), False)
 
-DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '-1002410949273').split()]
+DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '-1002412021360').split()]
 MAX_B_TN = environ.get("MAX_B_TN", "7")
 MAX_BTN = is_enabled((environ.get('MAX_BTN', "True")), True)
 PORT = environ.get("PORT", "8080")
 GRP_LNK = environ.get('GRP_LNK', 'https://t.me/MovieSearchGroupHD')
-CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/Movies_4_Download')
+CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/+AvKvMYnh8ONhNTM1')
 MSG_ALRT = environ.get('MSG_ALRT', 'Wʜᴀᴛ Aʀᴇ Yᴏᴜ Lᴏᴏᴋɪɴɢ Aᴛ ?')
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', -1002237007652))
 GROUP_VERIFY_LOGS = int(environ.get('GROUP_VERIFY_LOGS', -1002237007652)) # Group verify stats 
-REQ_CHANNEL = int(environ.get('REQ_CHANNEL', -1002410949273)) # movies request channel, else log channel
+REQ_CHANNEL = int(environ.get('REQ_CHANNEL', -1002412021360) # movies request channel, else log channel
 SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'Blockbuster_Movies_Club')
 IMDB = is_enabled((environ.get('IMDB', "True")), True)
 AUTO_FFILTER = is_enabled((environ.get('AUTO_FFILTER', "True")), True)
@@ -114,13 +116,13 @@ MAX_LIST_ELM = environ.get("MAX_LIST_ELM", None)
 INDEX_REQ_CHANNEL = int(environ.get('INDEX_REQ_CHANNEL', LOG_CHANNEL))
 MELCOW_NEW_USERS = is_enabled((environ.get('MELCOW_NEW_USERS', "True")), True)
 
-REACTION = ["🔥", "❤️", "😍", "⚡", "👍", "❤", "🔥", "🥰", "👏", "😁", "🎉", "🤩", "🙏", "👌", "🕊", "❤‍🔥", "⚡", "😇", "🤗", "😘", "🙊", "😎"]
+REACTION = ["🔥", "😍", "⚡", "🥰", "🎉", "❤‍🔥", "⚡", "😇", "🤗", "😘", "😎"]
 
 from os import environ, getenv
 ON_HEROKU = "DYNO" in os.environ  # Automatically detects Heroku
 
 # Streaming
-BIN_CHANNEL = int(environ.get("BIN_CHANNEL", "-1001637710147")) 
+BIN_CHANNEL = int(environ.get("BIN_CHANNEL", "-1002412021360")) 
 PORT = int(environ.get('PORT', 8080))
 NO_PORT = bool(environ.get('NO_PORT', False))
 BIND_ADDRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
