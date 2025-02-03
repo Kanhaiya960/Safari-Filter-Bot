@@ -14,7 +14,8 @@ cinemagoer
 shortzy
 
 python-telegram-bot==13.15
-openai==1.10.0
+openai==0.28.1
+httpx==0.13.3
 
 PyLeaves==1.0.2
 cinemagoer
