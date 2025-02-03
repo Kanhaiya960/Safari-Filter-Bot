@@ -90,9 +90,39 @@ async def start():
     await idle()
     await SafariBot.send_message(chat_id=LOG_CHANNEL, text=script.RESTART_TXT.format(temp.U_NAME, temp.B_NAME, today, time))
 
+import schedule
+from pyrogram import Client
+
+# Initialize the bot
+app = Client("my_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
+
+async def keep_alive():
+    try:
+        logging.info("Pinging to keep bot active...")
+        await app.send_message("me", "Bot is running!")
+    except Exception as e:
+        logging.error(f"Keep-alive failed: {e}")
+
+# Function to run scheduled tasks in an async loop
+async def run_schedule():
+    while True:
+        schedule.run_pending()
+        await asyncio.sleep(60)  # Run every 60 seconds
+
+# Schedule keep-alive every 10 minutes
+schedule.every(10).minutes.do(lambda: asyncio.create_task(keep_alive()))
 
 if __name__ == '__main__':
     try:
-        loop.run_until_complete(start())
+        loop = asyncio.get_event_loop()
+        loop.create_task(run_schedule())  # Start keep-alive scheduler
+        loop.run_until_complete(app.start())  # Start bot
     except KeyboardInterrupt:
         logging.info('Service Stopped Bye 👋')
+        
+    
+#if __name__ == '__main__':
+#    try:
+  #      loop.run_until_complete(start())
+  #  except KeyboardInterrupt:
+    ₹    logging.info('Service Stopped Bye 👋')
