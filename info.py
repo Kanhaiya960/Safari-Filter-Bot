@@ -124,10 +124,10 @@ ON_HEROKU = "DYNO" in os.environ  # Automatically detects Heroku
 # Streaming
 BIN_CHANNEL = int(environ.get("BIN_CHANNEL", "-1002412021360")) 
 PORT = int(environ.get('PORT', 8080))
-NO_PORT = bool(environ.get('NO_PORT', False))
+NO_PORT = bool(environ.get('NO_PORT', True))
 BIND_ADDRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
 FQDN = str(getenv('FQDN', BIND_ADDRESS))
-HAS_SSL = bool(getenv('HAS_SSL', False))
+HAS_SSL = bool(getenv('HAS_SSL', True))
 URL = "https://{}/".format(FQDN) if HAS_SSL or NO_PORT else \
     "http://{}:{}/".format(FQDN, PORT)
 
